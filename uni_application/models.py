@@ -111,16 +111,20 @@ class Teacher(Person):
     #Polymorphism : operator overload
     def __add__(self, other):
         """If teacher is added to subject he/she teaches:
-        will return for that subject:
-        - a list of all students enrolled,
-        - the number of students enrolled."""
+        will return in a text file 'list_students.txt':
+        - a list of all students enrolled for that subject,
+        - the number of students enrolled for that subject."""
         students_enrolled = []
         counter = 0
         if isinstance(other, Subject):
             for i in other.students: 
                 students_enrolled.append(i.fullname_email())
                 counter += 1
-        return students_enrolled, counter
+        #Creating text output files
+        f = open('list_students.txt', 'w')
+        f.write(f"The list of students enrolled on this subject: {students_enrolled}\n\n")
+        f.write(f"The total number of students enrolled on this subject: {counter}")
+        f.close()
 
 
 class TeachingAssistant(Person):
@@ -291,7 +295,6 @@ def main():
         Messages.display_content_message(message)
 
     #Polymorphism : operator overload
-    ls_teachers_students, counter = (law_teacher + criminal_law)
-    print(ls_teachers_students, counter)
+    law_teacher + criminal_law
 
 main()
