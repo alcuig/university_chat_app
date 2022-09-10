@@ -1,0 +1,3 @@
+The list of students enrolled on this subject: ['Angela Merkel | angela.merkel@university.com', 'Federica Mogherini | federica.mogherini@university.com', 'Amal Clooney | amal.clooney@university.com', 'Christine Lagarde | christine.lagarde@university.com', 'Gisele Halimi | gisele.halimi@university.com']
+
+The total number of students enrolled on this subject: 5
