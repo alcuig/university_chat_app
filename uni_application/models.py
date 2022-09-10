@@ -82,7 +82,6 @@ class Subject:
         self.students += students
         print(f"Student list for {self.name} updated.")
 
-
 class Person:
     def __init__(self, first: str, last: str, id: str):
         self.first = first
@@ -108,6 +107,20 @@ class Person:
 class Teacher(Person):
     def __init__(self, first: str, last: str, id: str):
         super().__init__(first=first, last=last, id=id)
+    
+    #Polymorphism : operator overload
+    def __add__(self, other):
+        """If teacher is added to subject he/she teaches:
+        will return for that subject:
+        - a list of all students enrolled,
+        - the number of students enrolled."""
+        students_enrolled = []
+        counter = 0
+        if isinstance(other, Subject):
+            for i in other.students: 
+                students_enrolled.append(i.fullname_email())
+                counter += 1
+        return students_enrolled, counter
 
 
 class TeachingAssistant(Person):
@@ -276,5 +289,9 @@ def main():
     y = Messages.find_messages_sent(physics_student_0)
     for message in y:
         Messages.display_content_message(message)
+
+    #Polymorphism : operator overload
+    ls_teachers_students, counter = (law_teacher + criminal_law)
+    print(ls_teachers_students, counter)
 
 main()
